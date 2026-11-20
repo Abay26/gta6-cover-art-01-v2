@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Press — GTA-style Cover Studio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="masthead">
+  <div>
+    <h1>VICE PRESS</h1>
+    <p>Turn your photos into GTA-style cover art — offline, in your browser.</p>
+  </div>
+  <div class="mast-actions">
+    <button id="diceBtn" type="button" title="Deal a whole new look">🎲 Randomize look</button>
+    <button id="undoBtn" type="button" title="Undo (Ctrl+Z)">↩ Undo</button>
+    <button id="redoBtn" type="button" title="Redo (Ctrl+Y)">↪ Redo</button>
+  </div>
+</header>
+<main class="studio">
+  <section class="preview">
+    <canvas id="cover" width="1080" height="1080"></canvas>
+    <p id="sizeLabel" class="size-label">1080 × 1080 · 5 panels</p>
+    <p class="hint">Click a panel to select it · drag inside a panel to reposition its photo · click a tray photo to place it</p>
+  </section>
+  <aside class="controls">
+    <section>
+      <h2>Layout</h2>
+      <div id="layoutStrip" class="thumb-strip"></div>
+    </section>
+    <section>
+      <h2>Photos</h2>
+      <div id="tray" class="tray">
+        <button class="tray-sample" type="button" data-sample="convertible">Convertible</button>
+        <button class="tray-sample" type="button" data-sample="rooftop">Rooftop</button>
+        <button class="tray-sample" type="button" data-sample="boulevard">Boulevard</button>
+        <button class="tray-sample" type="button" data-sample="pier">Pier</button>
+        <label class="upload">+ Your photos
+          <input id="uploadInput" type="file" accept="image/*" multiple hidden>
+        </label>
+      </div>
+      <div class="row">
+        <button id="fillAllBtn" type="button">Fill all panels</button>
+        <button id="shuffleBtn" type="button">Shuffle photos</button>
+      </div>
+    </section>
+    <section>
+      <h2 id="panelLabel">Panel 1 of 5</h2>
+      <label class="field">Role caption
+        <input id="captionInput" type="text" value="THE DRIVER" maxlength="24">
+      </label>
+      <label class="field">Zoom <span id="zoomValue">100%</span>
+        <input id="zoomInput" type="range" min="1" max="2.5" step="0.05" value="1">
+      </label>
+      <label class="check">
+        <input id="captionsToggle" type="checkbox" checked>
+        Show role captions on the cover
+      </label>
+    </section>
+    <section>
+      <h2>Caption</h2>
+      <label class="field">Title
+        <input id="titleInput" type="text" value="VICE PRESS" maxlength="24">
+      </label>
+      <label class="field">Subtitle
+        <input id="subtitleInput" type="text" value="Five roles, one last job" maxlength="48">
+      </label>
+      <label class="field">Badge
+        <input id="badgeInput" type="text" value="EST. 2026" maxlength="16">
+      </label>
+      <div class="row wrap" id="styleRow">
+        <button type="button" data-style="gradient" class="active">Sunset gradient</button>
+        <button type="button" data-style="solid">Solid white</button>
+        <button type="button" data-style="outline">Neon outline</button>
+        <button type="button" data-style="chrome">Chrome block</button>
+      </div>
+    </section>
+    <section>
+      <h2>Colour grade</h2>
+      <div class="row wrap" id="gradeRow">
+        <button type="button" data-grade="sunset" class="active">Vice Sunset</button>
+        <button type="button" data-grade="neon">Neon Night</button>
+        <button type="button" data-grade="teal">Palm Teal</button>
+        <button type="button" data-grade="haze">Heat Haze</button>
+        <button type="button" data-grade="noir">Noir</button>
+        <button type="button" data-grade="gold">Bayside Gold</button>
+        <button type="button" data-grade="midnight">Midnight Vice</button>
+        <button type="button" data-grade="candy">Candy Floss</button>
+      </div>
+    </section>
+    <section>
+      <h2>Export size</h2>
+      <div class="row wrap" id="sizeRow">
+        <button type="button" data-size="square" class="active">1080 × 1080</button>
+        <button type="button" data-size="portrait">1080 × 1350</button>
+        <button type="button" data-size="wide">1920 × 1080</button>
+      </div>
+      <div class="row wrap">
+        <button type="button" data-export="square">Export square</button>
+        <button type="button" data-export="portrait">Export portrait</button>
+        <button type="button" data-export="wide">Export wide</button>
+        <button id="exportAllBtn" type="button" class="primary">Export all three</button>
+      </div>
+    </section>
+  </aside>
+</main>
+<footer class="foot">
+  <p>Vice Press is an original cover maker. Photos stay on your machine — nothing is uploaded. Fonts: Anton &amp; Pacifico, SIL Open Font License.</p>
+</footer>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

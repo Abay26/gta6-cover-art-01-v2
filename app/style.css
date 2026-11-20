@@ -1,0 +1,210 @@
+@font-face {
+  font-family: 'Anton';
+  src: url('fonts/anton-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pacifico';
+  src: url('fonts/pacifico-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #0d0221;
+  color: #f5eefc;
+  font: 15px/1.45 system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 20px;
+  background: linear-gradient(90deg, #2b1055, #ff2975 55%, #ff7e2e);
+  border-bottom: 3px solid #ffd319;
+}
+
+.masthead h1 {
+  margin: 0;
+  font-family: 'Anton', sans-serif;
+  font-size: 34px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 3px 3px 0 #160a24;
+}
+
+.masthead p { margin: 2px 0 0; color: #ffe9f5; }
+
+.mast-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+button {
+  font: inherit;
+  color: #f5eefc;
+  background: #2b1745;
+  border: 1px solid #5b3a8c;
+  border-radius: 8px;
+  padding: 7px 12px;
+  cursor: pointer;
+}
+
+button:hover { border-color: #ffd319; }
+
+button.active {
+  background: #ff2975;
+  border-color: #ffd319;
+  color: #fff;
+}
+
+button.primary { background: #ff7e2e; border-color: #ffd319; color: #160a24; font-weight: 700; }
+
+.studio {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 20px;
+  padding: 20px;
+  align-items: start;
+}
+
+.preview { text-align: center; }
+
+#cover {
+  max-width: 100%;
+  max-height: calc(100vh - 190px);
+  width: auto;
+  height: auto;
+  background: #160a24;
+  border: 2px solid #5b3a8c;
+  border-radius: 6px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+  cursor: crosshair;
+}
+
+.size-label { margin: 10px 0 2px; font-family: 'Anton', sans-serif; letter-spacing: 1px; color: #ffd319; }
+
+.hint { margin: 0; color: #b9a8d6; font-size: 13px; }
+
+.controls section {
+  background: #1a0b33;
+  border: 1px solid #3d2b56;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.controls h2 {
+  margin: 0 0 10px;
+  font-family: 'Anton', sans-serif;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  color: #ffd319;
+  text-transform: uppercase;
+}
+
+.thumb-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.thumb {
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  font-size: 11px;
+}
+
+.thumb canvas { width: 100%; height: auto; border-radius: 4px; display: block; }
+
+.tray {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.tray-photo { padding: 2px; }
+
+.tray-photo img {
+  display: block;
+  width: 64px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.upload {
+  display: inline-block;
+  padding: 7px 12px;
+  border: 1px dashed #ffd319;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #ffd319;
+}
+
+.row { display: flex; gap: 8px; margin-top: 10px; }
+
+.row.wrap { flex-wrap: wrap; }
+
+.field { display: block; margin-bottom: 10px; font-size: 13px; color: #b9a8d6; }
+
+.field input[type='text'] {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px;
+  font: inherit;
+  color: #f5eefc;
+  background: #0d0221;
+  border: 1px solid #5b3a8c;
+  border-radius: 6px;
+}
+
+.field input[type='range'] { width: 100%; }
+
+.check { display: flex; gap: 8px; align-items: center; font-size: 13px; }
+
+.foot {
+  padding: 12px 20px 20px;
+  color: #b9a8d6;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* Screenshot scenes: the cover alone, edge to edge. */
+body.shot-cover { background: #160a24; }
+
+body.shot-cover .masthead,
+body.shot-cover .controls,
+body.shot-cover .foot,
+body.shot-cover .size-label,
+body.shot-cover .hint { display: none; }
+
+body.shot-cover .studio { display: block; padding: 0; }
+
+body.shot-cover .preview { text-align: left; }
+
+body.shot-cover #cover {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .studio { grid-template-columns: 1fr; }
+}
